@@ -1,0 +1,131 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>任务17</title>
+	<style>
+		html{
+			min-width:850px;
+		}
+		fieldset {
+			border-radius: 15px;
+		}
+		.grade{
+			margin-left:50px;
+			float:left;
+		}
+		label{
+			position: relative;
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			overflow:hidden;
+		}
+		label span{
+			display: block;
+			text-align: center;
+			line-height: 48px;
+			border: 1px solid #16324a;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+		input{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+		input[type="radio"]{
+			display:none;
+		}
+		input[type="radio"]:checked + span{
+			background-color: #16324a;
+			color: white;
+		}
+		#city-select{
+			background-color: #ffffff;
+			outline: none;
+			width: 110px;
+			line-height: 25px;
+			height:25px;
+			padding: 0 30px;
+			margin:15px 0 0 50px;
+			font-size: .75rem;
+		}
+		.aqi-chart-wrap{
+			position:relative;
+			display:flex;
+			width:90%;
+			height:550px;
+			/*justify-content:center;*/
+			/*align-content:center;*/
+			align-items:flex-end; /*垂直对齐*/
+			margin:10px auto;
+			overflow:hidden;
+			border-radius:15px;
+			box-shadow: 0 0 5px #999999;
+		}
+		@keyframes heightAnim{
+			0%{
+				bottom:-300px;
+			}
+			100%{
+				bottom:0;
+			}
+		}
+		.title{
+			position: absolute;
+			text-align: center;
+			width: 100%;
+			top: 10px;
+		}
+		.aqi-bar{
+			float:left;
+			position:relative;
+			flex:1;
+			cursor:pointer;
+			opacity:0.6;
+			animation:heightAnim .5s ease-in-out;
+			transition:0.3s;
+			box-shadow: 2px 2px 2px #888888;
+		}
+		.aqi-bar:hover{
+			opacity:1;
+		}
+		.blank{
+			flex:1;
+		}
+	</style>
+	<!--样式只兼容了Chrome和FF-->
+</head>
+<body>
+	<fieldset id="form-gra-time">
+		<legend>请选择日期粒度及城市：</legend>
+		<div class="grade">
+			<label>
+				<input name="gra-time" value="day" type="radio" checked="checked">
+				<span>日</span>
+			</label>
+			<label>
+				<input name="gra-time" value="week" type="radio">
+				<span>周</span>
+			</label>
+			<label>
+				<input name="gra-time" value="month" type="radio">
+				<span>月</span>
+			</label>
+			<label>
+				<input name="gra-time" value="month-week" type="radio">
+				<span>月-周</span>
+			</label>
+		</div>
+		<select id="city-select"></select>
+	</fieldset>
+	<div class="aqi-chart-wrap">
+	</div>
+	<br>
+	<hr>
+	<br> <img src="任务说明.png">
+	<script src="task.js"></script>
+</body>
+</html>
